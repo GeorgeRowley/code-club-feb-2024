@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Basic routing - Do you want 
+Basic routing - Do you like dogs?
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -28,11 +28,37 @@ Basic routing - Do you want
 
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-		<h1>
-			what is your name?
-		</h1>
+		<form action="/v1/basic-routing-radio" method="post">
+			<div class="nhsuk-form-group">
+				<fieldset class="nhsuk-fieldset">
+					<legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--xl">
+						<h1 class="nhsuk-fieldset__heading">
+							Do you like dogs?
+						</h1>
+					</legend>
+				
+					<div class="nhsuk-radios">
+						<div class="nhsuk-radios__item">
+							<input class="nhsuk-radios__input" id="radio-yes" name="basicDogs" type="radio" value="yes">
+							<label class="nhsuk-label nhsuk-radios__label" for="radio-yes">
+								Yes
+							</label>
+						</div>
+				
+						<div class="nhsuk-radios__item">
+							<input class="nhsuk-radios__input" id="radio-no" name="basicDogs" type="radio" value="no">
+							<label class="nhsuk-label nhsuk-radios__label" for="radio-no">
+								No
+							</label>
+						</div>
+					</div>
+				</fieldset>
+			</div>
 
-		
+			<button class="nhsuk-button" data-module="nhsuk-button" type="submit">
+				Continue
+			</button>
+		</form>
     </div>  
 </div>
 {% endblock %}

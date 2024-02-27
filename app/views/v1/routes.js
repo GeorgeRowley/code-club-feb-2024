@@ -2,7 +2,7 @@
 const express = require('express');
 const router = express.Router();
 
-router.post('/v1/basic-routing-radio', (req, res) => {
+router.post('/basic-routing-radio', (req, res) => {
     let likeDogs = req.session.data['basicDogs']
     if (likeDogs == "yes"){
         res.redirect("basic-like-dogs")

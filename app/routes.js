@@ -6,13 +6,8 @@ const router = express.Router();
 const versionOne = require('./views/v1/routes')
 router.use('/v1', versionOne);
 
-router.post('/v1/basic-routing-radio', (req, res) => {
-    let likeDogs = req.session.data['basicDogs']
-    if (likeDogs == "yes"){
-        res.redirect("basic-like-dogs")
-    } else {
-        res.redirect("basic-dislike-dogs")
-    }
-});
+// Routes for v2
+const versionTwo = require('./views/v2/routes')
+router.use('/v2', versionTwo);
 
 module.exports = router;

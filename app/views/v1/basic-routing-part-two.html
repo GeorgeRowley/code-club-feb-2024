@@ -8,7 +8,7 @@
 
 <!-- Set the page title -->
 {% block pageTitle %}
-Dislike dogs
+Basic routing part two
 {% endblock %}
 
 <!-- For adding a breadcrumb -->
@@ -28,15 +28,19 @@ Dislike dogs
 
 <div class="nhsuk-grid-row">
 	<div class="nhsuk-grid-column-two-thirds">
-		{{ backLink({
-			"href": "basic-routing-radio",
-			"text": "Go back"
-		  }) }}
 		<h1>
-			You do not like dogs
+			Basic routing
+            <span class="nhsuk-caption-xl nhsuk-caption--bottom">Part 2 of 2</span>
 		</h1>
-		<p>Thank you for letting us know.</p>
-		<a href="basic-routing-part-two" class="nhsuk-button">Continue</a>
+
+		<p>Content here.</p>
+
+		{{ pagination({
+			"previousUrl": "/v1/basic-routing",
+			"previousPage": "Basic routing part one",
+			"nextUrl": "/v1/complex-routing",
+			"nextPage": "Complex routing part one"
+		  }) }}
     </div>  
 </div>
 {% endblock %}

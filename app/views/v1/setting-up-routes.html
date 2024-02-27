@@ -1,0 +1,76 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Setting up your routes file for iterations
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+		<h1>
+			Setting up your routes file for iterations
+		</h1>
+
+        <p>As you will know - the UCD process involves constant iterations of the prototype, which over time can cause many headaches withing the routes file!</p>
+        <p>Iteration one might have a different journey flow than iteration two for example, multiply this by 8 iterations and you start to see where this might become a pain point to manage.</p>
+        <p>To mitigate this, having faced this problem myself on top of inheriting a protoytype with little to no comments and funky variable names (more on this later) I needed a solution. Below is how I decided to tackle this problem, and will be my preferred method of managing and setting up my routes in future.</p>
+
+        <div class="nhsuk-inset-text">
+            <span class="nhsuk-u-visually-hidden">Information: </span>
+            <p>Please note this is just my personal way of doing it and isn't the only way or necessarily the correct way it just works for me!</p>
+        </div>
+
+        <h2>Setting up your routes file</h2>
+
+        <p>
+            The first thing I do when setting up my protoypes is creating a folder in the <code>app/views</code> folder, and name it v1, so the file structure should look something like this <code>app/views/v1</code>. For every further iteration you would create a new folder by copy and pasting v1, renaming it and editing the files accordingly.
+        </p>
+        <p>
+            This folder is where all the HTML files for each screen for this iteration would live, but I will now create another file in here and name it <code>routes.js</code>
+        </p>
+
+        <p>I then copy and paste everything that comes in the default <code>app/routes.js</code> files into my new <code>routes.js</code> file. It should look something like this:</p>
+        
+        <img src="/images/routes-1.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+       
+        <p>The next step is very similar to how the <code>main.scss</code> file works - it imports various other files to build up the full file.</p>
+        <p>Back in the 'original' routes file <code>app/routes.js</code> - I add this functionality at the very bottom, just before <code>module.exports = router</code></p>
+        
+        <img src="/images/routes-2.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+
+        <p>For those that haven't seen the keyword of <code>const</code> before - this is used to declare a variable that cannot be reassigned a new value, so for the above example I never want the varaible of <code>versionOne</code> to ever reference another file other than the one I assigned it to. Which in this case is the file we created earlier <code>app/views/v1/routes.js</code>.</p>
+        <p>You can name your variables whatever you like (almost - some words are reserved) however it is best practice to name them something relevant so your code is easier to read and makes sense in the event someone else needs to work on your prototype.</p>
+        <p>The next line of code is essentially saying, when we requesting v1 of the prototype, use the routes file we assigned to <code>versionOne</code> - for every subsequent iteration we can copy the block of code and tweak accordingly (v1 to v2, versionOne to versionTwo etc.)</p>
+        <p>Here is an example of how your <code>app/routes.js</code> file might look after a couple of iterations:</p>
+        <img src="/images/routes-3.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+
+		{{ pagination({
+			"previousUrl": "/v1/what-is-routing",
+			"previousPage": "What is routing and when to use it",
+			"nextUrl": "/v1/basic-routing",
+			"nextPage": "Basic routing"
+		  }) }}
+    </div>  
+</div>
+{% endblock %}

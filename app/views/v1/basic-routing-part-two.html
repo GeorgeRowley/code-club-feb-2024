@@ -33,14 +33,83 @@ Basic routing part two
             <span class="nhsuk-caption-xl nhsuk-caption--bottom">Part 2 of 2</span>
 		</h1>
 
-		<p>Content here.</p>
+		<p>The first step of creating a route, actually begins in the view. We will use the previous short journey as our example.</p>
+		
+		<h2>Step one</h2>
 
+		<p>
+			The example journey uses a radio button to determine the journey branching, but before we add the radio button component we need a form.
+		</p>
+		<p>Here is the code snippet for the form:</p>
+
+		<img src="/images/routes-4.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+
+		<p>Let's break that down further...</p>
+
+		<p>The first bit you will notice is the action, as a general rule I like to use the file name the form lives in so in this case <code>basic-routing-radio.html</code> and I remove the file extension which in this case <code>.html</code>. Some people like to use the name of file with "router" or "post" appended, completely your choice how you do this!</p>
+		
+		<p>The action attribute specifies where to send the form data when a form is submitted, and what we will be referencing later on in <code>app/views/v1/routes.js</code></p>
+		
+		<p>The second bit we need to set is the <code>method</code> and for this we will be using <code>post</code> which we covered earlier.</p>
+		
+		<h2>Step two</h2>
+
+		<p>Now that we have our form set up, lets add some radio buttons:</p>
+
+		<img src="/images/routes-5.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+
+		<p>You can grab the HTML / Nunjucks from the service manual, however we will need to tweak this to make it fit for purpose.</p>
+		<p>The obivous things are changing the <code>h1</code> to the question we want to ask etc. But the important things we need to look at are <code>name</code> attritbute on the inputs, <code>id</code> and <code>value</code> attributes.</p>
+		<p>
+			With the <code>name</code> attribute it is good practice to name it something relevant to the question, so in this case "Do you like dogs?" setting <code>name</code> to <code>likeDogs</code> makes it obvious when it comes to building the routing what we are referring to.
+		</p>
+		<div class="nhsuk-inset-text">
+			<p>Make sure both <code>input</code> elements have the same <code>name</code> attribute - this is important!</p>
+		</div>
+		<p>For <code>id</code> and <code>value</code> these are unique for each input, <code>value</code> in this example is the exact same as the label text, however in examples where the label might be longer than just 'yes or no' you can shorten it - just remember to make it relevant.</p>
+		
+		<h2>Step three</h2>
+
+		<p>The final piece of the puzzle before we move onto the routing is adding a submit button. We need this in order to post the data from the form.</p>
+		<p>The code for the button should look something like this:</p>
+		<img src="/images/routes-6.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+		<p>The most important part of this block of code is ensuring that it has the type attribute set to <code>submit</code></p>
+		<p>And this block of code should live just before your closing <code>form</code> tag, with the overall thing now looking somthing like this:</p>
+		<img src="/images/routes-7.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+		<p>Now our form is fully built - lets look at building out the routing.</p>
+
+		<h2>Step four</h2>
+
+		<p>
+			In our routes file that we created earlier, in this case the file path is <code>app/views/v1/routes.js</code> we can begin to build our route using an arrow function and if statement.
+		</p>
+		<p>An arrow function expression is a compact alternative to a traditional function expression, with some semantic differences.</p>
+		<p>Here is the snippet in full, before we break it down:</p>
+
+		<img src="/images/routes-8.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+
+		<p>Let's break it down simply line by line.</p>
+		<p><strong>Line 1</strong> - this essentially reads, when we use the <code>post</code> method by hitting the submit button on <code>/basic-routing-radio</code> (this is what we set our form action to in the view earlier) execute the following bits of code.</p>
+		<p>Sometimes the bit in brackets might be 'req and res' or other times you might have seen it as 'request and response' - either is fine I prefer the shorter lazier way! Just make sure it's consistent throughout your function.</p>
+		<hr>
+		<p><strong>Line 2</strong> - Here we are setting the name of the input from the view to a variable to make it easier to re-use and read.</p>
+		<p>Remeber, make the variable name relevant, not just <code>xyz</code> or something.</p>
+		<p>Like before when we mentioned req and res, you may have seen the keyword <code>var</code> used instead of <code>let</code> - let is the 'modern JavaScript' keyword, don't worry too much as this is a prototype not production code so use whichever you feel most comfortable using.</p>
+		<hr>
+		<p><strong>Line 3</strong> - This is where we start our if statement, and what this is saying simply is "if you selected yes to liking dogs do this next line of code".</p>
+		<p>Using the variable of <code>likeDogs</code> we created earlier is much more readable and easier than having to type out <code>req.session.data['basicDogs']</code> all the time!</p>
+		<p>The other important bit comes after the 'equals' and this should be set to the <code>value</code> attribute of the radio button in this case you want to perform the check against we set previously in the view, which in this case is 'yes'.</p>
+		<hr>
+		<p><strong>Line 4</strong> - This line we are saying because you selected yes to liking dogs, the <code>res</code> (response) is to then redirect you on to the view of <code>basic-like-dogs</code></p>
+		<hr>
+		<p><strong>Line 5 & 6</strong> - These two lines are quite straight forward, what these two lines are saying is, if the radio you selected has a <code>value</code> of anything <strong>else</strong> other than 'yes' then redirect to the view of <code>basic-dislike-dogs</code></p> 
+		<p>Given that there are only two options to choose from, it can only go to that view.</p>
 		{{ pagination({
 			"previousUrl": "/v1/basic-routing",
 			"previousPage": "Basic routing part one",
 			"nextUrl": "/v1/complex-routing",
 			"nextPage": "Complex routing part one"
-		  }) }}
+		}) }}
     </div>  
 </div>
 {% endblock %}

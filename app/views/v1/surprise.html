@@ -1,0 +1,64 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Bali and Ralph
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        {{ backLink({
+			"href": "displaying-data",
+			"text": "Go back"
+		}) }}
+
+        <h1>
+			Bali and Ralph
+		</h1>
+
+        <div class="nhsuk-grid-row">
+            <div class="nhsuk-grid-column-one-half">
+                <figure class="nhsuk-image w-100 nhsuk-u-margin-top-0">
+                    <img class="nhsuk-image__img" src="/images/bali.jpg" alt="Bali">
+                    <figcaption class="nhsuk-image__caption">
+                        Bali
+                    </figcaption>
+                </figure>
+            </div>
+            
+            <div class="nhsuk-grid-column-one-half">
+                <figure class="nhsuk-image w-100 nhsuk-u-margin-top-0">
+                    <img class="nhsuk-image__img" src="/images/ralph.jpg" alt="Ralph">
+                    <figcaption class="nhsuk-image__caption">
+                        Ralph
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+
+
+        <a href="/" class="nhsuk-button" role="button">Back to the start</a>
+    </div>  
+</div>
+{% endblock %}

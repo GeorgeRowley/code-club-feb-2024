@@ -1,0 +1,74 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Complex routing part two
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+		<h1>
+			Complex routing
+            <span class="nhsuk-caption-xl nhsuk-caption--bottom">Part 2 of 2</span>
+		</h1>
+
+        <p>Since we covered setting up the <code>form</code> inside the view in the basic routing section of this tutorial, we will jump straight into what's happening in the <code>app/views/v1/routes.js</code> file and why.</p>
+        <p>Here is the snippet that controls the complex journey:</p>
+        <img src="/images/routes-9.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4"/>
+
+        <p>Lines 1 & 2 are essentially the same as the previous example shown during 'basic routing' so we will break it down staring at line 3.</p>
+        
+        <h3>Line 3 & 4</h3>
+
+        <p>These two lines of code are essentially saying in plain English - "if the name input is left blank then redirect the user to the error page".</p>
+        <p>Nothing really new here in comparison to the prior example.</p>
+        <p>Sometimes when we protoytpe with users it's nice to show both a 'happy' and 'unhappy' path, this is a good way of showing the user what an error state might look like on a service.</p>
+
+        <hr>
+
+        <h3>Line 5 & 6</h3>
+        <p>These two lines are using <code>else if</code> - and it's pretty much exactly as it sounds... But wait, what is <code>||</code> doing there?</p>
+        <p>Okay - so here what we are saying is if we follow from the top "if the name input is empty, show the error screen, else if the name input <strong>is not empty AND</strong> is equal to Bali <strong>OR</strong> Ralph show the clever dog screen".</p>
+        <p>Essentially <code>||</code> in JavaScript is a way of saying <strong>or</strong>. You can also use <code>&&</code> which you guessed it, means <strong>and</strong>.</p>
+        <p>You can also mix and match the two, let's say for example we had two inputs on the screen - one with the <code>name</code> attribute of 'name' and the other input having its <code>name</code> atrribute as 'animal'.</p>
+        <p>An example of how that might work could look something like this:</p>
+        <img src="/images/routes-10.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4"/>
+        <p>What that example is saying is, in order to see the clever dog screen, we now need to have the name input match Bali or Ralph, <strong>and</strong> the animal input match dog.</p>
+        
+        <hr>
+
+        <h3>Line 7 & 8</h3>
+
+        <p>Finally, if we go back to the original reference route image, the last part is basically saying "If the input is not empty, and is not Bali or Ralph then we will show you the finish page".</p>
+        <p>So in short - add any name other than those two, so long as something is inputted we will show you the finish screen.</p>
+                
+        {{ pagination({
+			"previousUrl": "/v1/complex-routing",
+			"previousPage": "Complex routing part one",
+            "nextUrl": "/v1/displaying-data",
+			"nextPage": "Displaying data"
+        }) }}
+    </div>  
+</div>
+{% endblock %}

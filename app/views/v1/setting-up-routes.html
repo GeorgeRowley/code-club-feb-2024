@@ -52,12 +52,12 @@ Setting up your routes file for iterations
 
         <p>I then copy and paste everything that comes in the default <code>app/routes.js</code> files into my new <code>routes.js</code> file. It should look something like this:</p>
         
-        <img src="/images/routes-1.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+        <img src="/images/routes-1.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4"/>
        
         <p>The next step is very similar to how the <code>main.scss</code> file works - it imports various other files to build up the full file.</p>
         <p>Back in the 'original' routes file <code>app/routes.js</code> - I add this functionality at the very bottom, just before <code>module.exports = router</code></p>
         
-        <img src="/images/routes-2.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
+        <img src="/images/routes-2.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4"/>
 
         <p>For those that haven't seen the keyword of <code>const</code> before - this is used to declare a variable that cannot be reassigned a new value, so for the above example I never want the varaible of <code>versionOne</code> to ever reference another file other than the one I assigned it to. Which in this case is the file we created earlier <code>app/views/v1/routes.js</code>.</p>
         <p>You can name your variables whatever you like (almost - some words are reserved) however it is best practice to name them something relevant so your code is easier to read and makes sense in the event someone else needs to work on your prototype.</p>

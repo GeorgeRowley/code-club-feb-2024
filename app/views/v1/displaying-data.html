@@ -1,0 +1,53 @@
+<!-- Extends the layout from /views/layout.html -->
+{% extends 'layout.html' %}
+<!-- 
+  In /views/layout.html you can:
+    - edit the header and footer 
+    - add custom CSS and JavaScript
+-->
+
+<!-- Set the page title -->
+{% block pageTitle %}
+Displaying data
+{% endblock %}
+
+<!-- For adding a breadcrumb -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/breadcrumbs -->
+{% block beforeContent %}
+
+{% endblock %}
+
+<!-- For adding a back link -->
+<!-- Code examples can be found at https://service-manual.nhs.uk/design-system/components/back-link -->
+{% block outerContent %}
+{% endblock %}
+
+<!-- For adding page content -->
+<!-- Page layout code can be found at https://service-manual.nhs.uk/design-system/styles/layout -->
+{% block content %}
+
+<div class="nhsuk-grid-row">
+	<div class="nhsuk-grid-column-two-thirds">
+        <h1>Displaying data</h1>
+
+        <p>To wrap things up, you've built your route, and you've landed on the finish screen. Great. But how did you know that was the name I entered?</p>
+        <p>Simple!</p>
+        <p>When you have been using the <code>post</code> method on your form components from the view, the data has been stored in the session and can be accessed by using the <strong>data.</strong> followed by whatever you used for the <code>name</code> attribute on your input, in this instance we also happened to use 'name'.</p>
+        <p>So using nunjucks in the view it should like the following:</p>
+        <img src="/images/routes-11.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4"/>
+        <p>That's great, but what if when you hand your prototype over to your developer and they browse directly to the screen without ever entering a name? Or what if you want the name to be capitalized?</p>
+        <p>Don't worry - we got you:</p>
+        <img src="/images/routes-12.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4"/>
+        <p>By using a singular <code>|</code> you can use what's known as a nunjucks filter. See the official docs for examples, but with the above example we are essentially saying - display what we have stored in name, if that's not found show 'Jane' as that is what we have set it to by default, and then capitalise it so even if the user entered their name in lower case, the first letter will be capitalised.</p>
+        <hr>
+        <h2>Why so many dog references? Who are Bali and Ralph?</h3>
+
+        <a href="surprise" class="nhsuk-button" role="button">Click for a surprise</a>
+
+        {{ pagination({
+			"previousUrl": "/v1/complex-routing-part-two",
+			"previousPage": "Complex routing part two"
+        }) }}
+    </div>  
+</div>
+{% endblock %}

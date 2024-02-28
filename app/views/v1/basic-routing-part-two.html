@@ -89,21 +89,36 @@ Basic routing part two
 		<img src="/images/routes-8.svg" alt="routes file example" class="nhsuk-u-margin-bottom-4">
 
 		<p>Let's break it down simply line by line.</p>
-		<p><strong>Line 1</strong> - this essentially reads, when we use the <code>post</code> method by hitting the submit button on <code>/basic-routing-radio</code> (this is what we set our form action to in the view earlier) execute the following bits of code.</p>
+
+		<h3>Line 1</h3>
+		<p>This essentially reads, when we use the <code>post</code> method by hitting the submit button on <code>/basic-routing-radio</code> (this is what we set our form action to in the view earlier) execute the following bits of code.</p>
 		<p>Sometimes the bit in brackets might be 'req and res' or other times you might have seen it as 'request and response' - either is fine I prefer the shorter lazier way! Just make sure it's consistent throughout your function.</p>
+		
 		<hr>
-		<p><strong>Line 2</strong> - Here we are setting the name of the input from the view to a variable to make it easier to re-use and read.</p>
+
+		<h3>Line 2</h3>
+		<p>Here we are setting the name of the input from the view to a variable to make it easier to re-use and read.</p>
 		<p>Remeber, make the variable name relevant, not just <code>xyz</code> or something.</p>
 		<p>Like before when we mentioned req and res, you may have seen the keyword <code>var</code> used instead of <code>let</code> - let is the 'modern JavaScript' keyword, don't worry too much as this is a prototype not production code so use whichever you feel most comfortable using.</p>
+		
 		<hr>
-		<p><strong>Line 3</strong> - This is where we start our if statement, and what this is saying simply is "if you selected yes to liking dogs do this next line of code".</p>
+
+		<h3>Line 3</h3>
+		<p>This is where we start our if statement, and what this is saying simply is "if you selected yes to liking dogs do this next line of code".</p>
 		<p>Using the variable of <code>likeDogs</code> we created earlier is much more readable and easier than having to type out <code>req.session.data['basicDogs']</code> all the time!</p>
 		<p>The other important bit comes after the 'equals' and this should be set to the <code>value</code> attribute of the radio button in this case you want to perform the check against we set previously in the view, which in this case is 'yes'.</p>
+		
 		<hr>
-		<p><strong>Line 4</strong> - This line we are saying because you selected yes to liking dogs, the <code>res</code> (response) is to then redirect you on to the view of <code>basic-like-dogs</code></p>
+
+		<h3>Line 4</h3>
+		<p>This line we are saying because you selected yes to liking dogs, the <code>res</code> (response) is to then redirect you on to the view of <code>basic-like-dogs</code></p>
+		
 		<hr>
-		<p><strong>Line 5 & 6</strong> - These two lines are quite straight forward, what these two lines are saying is, if the radio you selected has a <code>value</code> of anything <strong>else</strong> other than 'yes' then redirect to the view of <code>basic-dislike-dogs</code></p> 
+
+		<h3>Line 5 & 6</h3>
+		<p>These two lines are quite straight forward, what these two lines are saying is, if the radio you selected has a <code>value</code> of anything <strong>else</strong> other than 'yes' then redirect to the view of <code>basic-dislike-dogs</code></p> 
 		<p>Given that there are only two options to choose from, it can only go to that view.</p>
+		
 		{{ pagination({
 			"previousUrl": "/v1/basic-routing",
 			"previousPage": "Basic routing part one",

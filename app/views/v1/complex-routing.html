@@ -31,13 +31,55 @@ Complex routing
 		<h1>
 			Complex routing
 		</h1>
-		<p>Content here.</p>
-		<a href="#" class="nhsuk-button">Start complex journey</a>
+		<p>For the next part of this tutorial, we will look at more complex routing using an text input component this time.</p>
+        <p>Like we did previously on the 'basic journey' we will first show the journey, and then break down how we did it. You can use the following inputs to trigger the different journeys:</p>
+		
+        {{ table({
+        panel: false,
+        caption: "Input options",
+        firstCellIsHeader: false,
+        head: [
+            {
+            text: "Input text"
+            },
+            {
+            text: "Screen to be shown"
+            }
+        ],
+        rows: [
+            [
+            {
+                text: "Leave the input blank"
+            },
+            {
+                text: "Error screen"
+            }
+            ],
+            [
+            {
+                text: "Bali or Ralph"
+            },
+            {
+                text: "Clever dog screen"
+            }
+            ],
+            [
+            {
+                text: "Any other name e.g. 'George'"
+            },
+            {
+                text: "Finish screen"
+            }
+            ]
+        ]
+        }) }}
+        
+        <a href="complex-name" class="nhsuk-button">Start complex journey</a>
 
         {{ pagination({
 			"previousUrl": "/v1/basic-routing-part-two",
 			"previousPage": "Basic routing part two"
-		  }) }}
+        }) }}
     </div>  
 </div>
 {% endblock %}
